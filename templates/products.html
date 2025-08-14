@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Products in Stock</h1>
+    <a href="{% url 'add_product' %}">Add New Product</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{% url 'edit_product' product.pk %}">Edit</a> |
+                    <a href="{% url 'delete_product' product.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No products in stock.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
