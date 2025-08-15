@@ -4,7 +4,7 @@ from .models import Product
 
 
 def index(request):
-    return HttpResponse("Welcome to Django Stock Inventory!")
+    return render(request, 'index.html')
 
 def product_list(request):
     products = Product.objects.all()
@@ -21,7 +21,7 @@ def add_product(request):
 
         product = Product(name=name, price=price, quantity=quantity)
         product.save()
-        return HttpResponse("Product added successfully!")
+        return HttpResponse("Product added successfully!<br><a href='/products/'>Go to product list</a>")
     return render(request, 'add_product.html')
 
 def edit_product(request, product_id):
@@ -31,7 +31,7 @@ def edit_product(request, product_id):
         product.price = request.POST.get('price')
         product.quantity = request.POST.get('quantity')
         product.save()
-        return HttpResponse("Product updated successfully!")
+        return HttpResponse("Product updated successfully! <br><a href='/products/'>Go to product list</a>")
     return render(request, 'edit_product.html', {'product': product})
 
 

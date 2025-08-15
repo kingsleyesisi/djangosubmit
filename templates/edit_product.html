@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit product</title>
+    <title> add product </title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
-<body>
-    <h1>Edit Product</h1>
-    <form method="post">
+<body class="bg-blue-400 p-6">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-pink-100 p-8 rounded-lg shadow-md w-full max-w-2xl">
+            
+            <form method="post" class="">
+                <h1 class="text-5xl font-bold mb-8 text-center"> Edit Product </h1>
         {% csrf_token %}
-        <label for="name">Product Name:</label>
-        <input type="text" id="name" name="name" value="{{ product.name }}" required>
+
+        
+        <label for="name" class="mb-4">Product Name:</label>
+        <input type="text" id="name" name="name" value="{{ product.name }}" required class="border border-gray-300 p-2 rounded w-full">
         <br>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" value="{{ product.quantity }}" required>
+        <label for="quantity" class="mb-4">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="{{ product.quantity }}" required class="border border-gray-300 p-2 rounded w-full">
         <br>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" value="{{ product.price }}" required>
+        <label for="price" class="mb-4">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" value="{{ product.price }}" required class="border border-gray-300 p-2 rounded w-full">
         <br>
-        <button type="submit">Save</button>
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save</button>
     </form>
-    <a href="{% url 'product_list' %}">Cancel</a>
-    <a href="{% url 'delete_product' product.pk %}">Delete Product</a>
+    <a href="{% url 'product_list' %}" class=""> <--back; </a><br>
+    <a href="{% url 'delete_product' product.pk %}" class="text-red-500 hover:underline bg-red-300  p-2">Delete Product</a>
 </body>
 </html>

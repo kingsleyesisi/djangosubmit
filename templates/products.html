@@ -2,36 +2,43 @@
 <html>
 <head>
     <title>Product List</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
-<body>
-    <h1>Products in Stock</h1>
-    <a href="{% url 'add_product' %}">Add New Product</a>
-    <table border="1">
+<body class="bg-blue-400 p-6">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
+    <h1 class="text-5xl font-bold mb-8 text-black text-center">Products in Stock</h1>
+    
+    <a href="{% url 'add_product' %}" class="font-bold text-green-500 mb-8">Add New Product</a>
+    <table class="min-w-full bg-white border border-gray-300 mt-8">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th class="py-2 px-4 border-b text-left bg-gray-100">Name</th>
+                <th class="py-2 px-4 border-b text-left bg-gray-100">Quantity</th>
+                <th class="py-2 px-4 border-b text-left bg-gray-100">Price</th>
+                <th class="py-2 px-4 border-b text-left bg-gray-100">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>{{ product.price }}</td>
-                <td>
-                    <a href="{% url 'edit_product' product.pk %}">Edit</a> |
-                    <a href="{% url 'delete_product' product.pk %}">Delete</a>
+            <tr class="hover:bg-gray-50">
+                <td class="py-2 px-4 border-b">{{ product.name }}</td>
+                <td class="py-2 px-4 border-b">{{ product.quantity }}</td>
+                <td class="py-2 px-4 border-b">{{ product.price }}</td>
+                <td class="py-2 px-4 border-b">
+                    <a href="{% url 'edit_product' product.pk %}" class="text-blue-500 hover:underline">Edit</a>
+                    <span class="mx-1 text-gray-400">|</span>
+                    <a href="{% url 'delete_product' product.pk %}" class="text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4">No products in stock.</td>
+                <td colspan="4" class="py-4 text-center text-gray-500">No products in stock.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
 </body>
 </html>
