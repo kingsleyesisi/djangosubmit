@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Dashboard</h2>
-<p>Total Products: {{ total_products }}</p>
-<p>Total Customers: {{ total_customers }}</p>
-<p>Total Sales: {{ total_sales }}</p>
+<div class="max-w-md mx-auto mt-10 bg-gray-50 rounded-xl shadow-md p-8">
+    <h2 class="text-center text-2xl font-bold text-gray-800 mb-6">Dashboard</h2>
+    <div class="text-base leading-8">
+        <p><strong>Total Products:</strong> <span class="text-blue-600">{{ total_products }}</span></p>
+        <p><strong>Total Customers:</strong> <span class="text-green-600">{{ total_customers }}</span></p>
+        <p><strong>Total Sales:</strong> <span class="text-orange-500">{{ total_sales }}</span></p>
+    </div>
+</div>
 {% endblock %}

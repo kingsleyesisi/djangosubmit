@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Products</h2>
-<a href="{% url 'product_create' %}">Add Product</a>
-<ul>
+<h2 style="margin-bottom: 20px; color: #2c3e50;">Products</h2>
+<a href="{% url 'product_create' %}" style="display: inline-block; margin-bottom: 20px; padding: 8px 16px; background: #3498db; color: #fff; border-radius: 4px; text-decoration: none;">Add Product</a>
+<ul style="list-style: none; padding: 0;">
     {% for product in products %}
-    <li>{{ product.name }} - ${{ product.price }} (Stock: {{ product.stock }})
-        <a href="{% url 'product_update' product.pk %}">Edit</a>
-        <a href="{% url 'product_delete' product.pk %}">Delete</a>
+    <li style="background: #f8f8f8; margin-bottom: 12px; padding: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between;">
+        <span>
+            <strong>{{ product.name }}</strong> - ${{ product.price }} 
+            <span style="color: #888;">(Stock: {{ product.stock }})</span>
+        </span>
+        <span>
+            <a href="{% url 'product_update' product.pk %}" style="margin-right: 10px; color: #2980b9; text-decoration: none;">Edit</a>
+            <a href="{% url 'product_delete' product.pk %}" style="color: #e74c3c; text-decoration: none;">Delete</a>
+        </span>
     </li>
     {% endfor %}
 </ul>
