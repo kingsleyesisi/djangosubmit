@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Customers</h2>
+<a href="{% url 'sale_create' %}">Add Sales record </a>
+<ul>
+    {% for sale in sales %}
+    <li>{{ sale.product }} - {{ sale.customer }} (quantity: {{ sale.quantity }})
+        <a href="{% url 'sale_update' sale.pk %}">Edit</a>
+        <a href="{% url 'sale_delete' sale.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

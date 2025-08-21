@@ -1,5 +1,5 @@
 """
-WSGI config for stock_management project.
+WSGI config for sales_management project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stock_management.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sales_management.settings')
 
 application = get_wsgi_application()

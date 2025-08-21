@@ -1,0 +1,23 @@
+
+[
+  {
+    "model": "inventory.product",
+    "pk": 1,
+    "fields": {
+      "name": "Chocolate Chip Biscuits",
+      "quantity": 50,
+      "price": "2.50",
+      "user": 1
+    }
+  },
+  {
+    "model": "inventory.product",
+    "pk": 2,
+    "fields": {
+      "name": "Oatmeal Cookies",
+      "quantity": 30,
+      "price": "3.00",
+      "user": 1
+    }
+  }
+]
