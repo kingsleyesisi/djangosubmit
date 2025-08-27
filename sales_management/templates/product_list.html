@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 style="margin-bottom: 20px; color: #2c3e50;">Products</h2>
-<a href="{% url 'product_create' %}" style="display: inline-block; margin-bottom: 20px; padding: 8px 16px; background: #3498db; color: #fff; border-radius: 4px; text-decoration: none;">Add Product</a>
-<ul style="list-style: none; padding: 0;">
+<h1 class="mb-6 text-3xl font-bold text-gray-900">Products</h1>
+<a href="{% url 'product_create' %}" class="inline-block mb-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Add Product</a>
+<ul class="list-none p-0"></ul>
     {% for product in products %}
-    <li style="background: #f8f8f8; margin-bottom: 12px; padding: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between;">
+    <li class="bg-gray-50 mb-3 p-4 rounded-lg flex items-center justify-between ">
         <span>
-            <strong>{{ product.name }}</strong> - ${{ product.price }} 
-            <span style="color: #888;">(Stock: {{ product.stock }})</span>
+            <strong class="text-lg">{{ product.name }}</strong>
+            <span class="text-gray-700">- ${{ product.price }}</span>
+            <span class="text-gray-400 ml-2">(Stock: {{ product.stock }})</span>
         </span>
         <span>
-            <a href="{% url 'product_update' product.pk %}" style="margin-right: 10px; color: #2980b9; text-decoration: none;">Edit</a>
-            <a href="{% url 'product_delete' product.pk %}" style="color: #e74c3c; text-decoration: none;">Delete</a>
+            <a href="{% url 'product_update' product.pk %}" class="mr-4 text-blue-700 hover:underline">Edit</a>
+            <a href="{% url 'product_delete' product.pk %}" class="text-red-600 hover:underline">Delete</a>
         </span>
     </li>
     {% endfor %}

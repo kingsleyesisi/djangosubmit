@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Customers</h2>
-<a href="{% url 'sale_create' %}">Add Sales record </a>
-<ul>
+<h1 class="mb-6 text-3xl font-bold text-gray-900">Customers</h1>
+<a href="{% url 'sale_create' %}" class="inline-block mb-6 px-4 py-2 bg-blue-600 rounded text-white">Add Sales record </a>
+<ul class=" list-none p-0">
     {% for sale in sales %}
-    <li>{{ sale.product }} - {{ sale.customer }} (quantity: {{ sale.quantity }})
-        <a href="{% url 'sale_update' sale.pk %}">Edit</a>
-        <a href="{% url 'sale_delete' sale.pk %}">Delete</a>
+    <li class="bg-gray-50 mb-3 p-4 rounded-lg flex items-center justify-between">
+        <span>
+            <strong class="text-lg">{{ sale.customer }}</strong> 
+            <span> {{ sale.product }} </span>
+            <span> quantity: {{ sale.quantity }} </span>
+            </span>
+        <span>
+            <a href="{% url 'sale_update' sale.pk %}" class="mr-4 text-blue-700 hover:underline">Edit</a>
+            <a href="{% url 'sale_delete' sale.pk %}" class="text-red-600 hover:underline">Delete</a>
+        </span>
     </li>
     {% endfor %}
 </ul>
