@@ -21,15 +21,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for inventory in inventories %}
+            {% for items in inventories %}
             <tr class="hover:bg-gray-50">
-                <td class="py-2 px-4 border-b">{{ inventory.name }}</td>
-                <td class="py-2 px-4 border-b">{{ inventory.quantity }}</td>
-                <td class="py-2 px-4 border-b">{{ inventory.price }}</td>
+                <td class="py-2 px-4 border-b">{{ items.name }}</td>
+                <td class="py-2 px-4 border-b">{{ items.quantity }}</td>
+                <td class="py-2 px-4 border-b">{{ items.price }}</td>
                 <td class="py-2 px-4 border-b">
-                    <a href="{% url 'edit' inventory.pk %}" class="text-blue-500 hover:underline">Edit</a>
+                    <a href="{% url 'edit' items.pk %}" class="text-blue-500 hover:underline">Edit</a>
                     <span class="mx-1 text-gray-400">|</span>
-                    <a href="{% url 'delete' inventory.pk %}" class="text-red-500 hover:underline">Delete</a>
+                    <a href="{% url 'delete' items.pk %}" class="text-red-500 hover:underline">Delete</a>
                 </td>
 
             </tr>

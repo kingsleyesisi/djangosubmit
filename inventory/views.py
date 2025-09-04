@@ -1,44 +1,44 @@
 from django.shortcuts import render
+from .models import Inventory
 from django.http import HttpResponseRedirect
-from .models import Product
 
-# The index page 
+
 def index(request):
     return render(request, 'index.html')
 
 
-def product_list(request):
-    products = Product.objects.all()
-    data = {
-        'products': products
-    }
-    return render(request, 'products.html', data)
-
-def add_product(request):
-    if request.method == 'POST':
+def add_inventory(request):
+    if request.method == "POST":
         name = request.POST.get('name')
-        price = request.POST.get('price')
         quantity = request.POST.get('quantity')
+        price = request.POST.get('price')
 
-        product = Product(name=name, price=price, quantity=quantity)
-        product.save()
-        return HttpResponseRedirect("/products")
-    return render(request, 'add_product.html')
+        Inventory.objects.create(name=name, 
+                                 quantity=quantity, 
+                                 price=price)
+        return HttpResponseRedirect('/view')
 
-def edit_product(request, product_id):
-    product = Product.objects.get(id=product_id)
-    if request.method == 'POST':
-        product.name = request.POST.get('name')
-        product.price = request.POST.get('price')
-        product.quantity = request.POST.get('quantity')
-        product.save()
-        return HttpResponseRedirect("/products")
-    return render(request, 'edit_product.html', {'product': product})
+    return render(request, 'add_inventory.html')
 
 
-def delete_product(request, product_id):
-    product = Product.objects.get(id=product_id)
-    if request.method == 'POST':
-        product.delete()
-        return HttpResponseRedirect("/products")
-    return render(request, 'delete_product.html', {'product': product})
+def view_inventory(request):
+    inventories = Inventory.objects.all()
+    return render(request, 'view_inventory.html', {'inventories': inventories})
+
+# This is to delete products in our inventory 
+def delete_inventory(request, inventory_id):
+    inventory = Inventory.objects.get(id=inventory_id)
+    inventory.delete()
+    return HttpResponseRedirect('/view')
+
+# This is for Edition out inventory 
+def update_inventory(request, inventory_id):
+    inventory = Inventory.objects.get(id=inventory_id)
+    if request.method == "POST":
+        inventory.name = request.POST.get('name')
+        inventory.quantity = request.POST.get('quantity')
+        inventory.price = request.POST.get('price')
+        inventory.save()
+        return HttpResponseRedirect('/view')
+
+    return render(request, 'update_inventory.html', {'inventory': inventory})
