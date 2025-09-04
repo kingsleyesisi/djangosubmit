@@ -10,7 +10,7 @@
         <div class="bg-pink-100 p-8 rounded-lg shadow-md w-full max-w-2xl">
             
             <form method="post" class="">
-                <h1 class="text-5xl font-bold mb-8 text-center"> Add Product </h1>
+                <h1 class="text-5xl font-bold mb-8 text-center"> Add Item </h1>
         {% csrf_token %}
 
         
@@ -27,6 +27,6 @@
         <br>
         <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save</button>
     </form>
-    <a href="{% url 'product_list' %}" class="text-red-500 hover:underline bg-red-300  p-2">Cancel</a>
+    <a href="/" class="text-red-500 hover:underline bg-red-300  p-2">Cancel</a>
 </body>
 </html>
