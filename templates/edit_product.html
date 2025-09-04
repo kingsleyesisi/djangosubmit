@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> add product </title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <title>Edit Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-blue-400 p-6">
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-pink-100 p-8 rounded-lg shadow-md w-full max-w-2xl">
-            
-            <form method="post" class="">
-                <h1 class="text-5xl font-bold mb-8 text-center"> Edit Product </h1>
-        {% csrf_token %}
+<body class="bg-blue-100 p-6 min-h-screen flex items-center justify-center">
+    <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+        <h1 class="text-2xl font-bold mb-4 text-center">Edit Product</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label>Product Name:</label>
+            <input type="text" name="name" value="{{ product.name }}" required class="border p-2 w-full mb-3">
 
-        
-        <label for="name" class="mb-4">Product Name:</label>
-        <input type="text" id="name" name="name" value="{{ product.name }}" required class="border border-gray-300 p-2 rounded w-full">
-        <br>
+            <label>Quantity:</label>
+            <input type="number" name="quantity" value="{{ product.quantity }}" required class="border p-2 w-full mb-3">
 
-        <label for="quantity" class="mb-4">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" value="{{ product.quantity }}" required class="border border-gray-300 p-2 rounded w-full">
-        <br>
+            <label>Price:</label>
+            <input type="number" name="price" step="0.01" value="{{ product.price }}" required class="border p-2 w-full mb-3">
 
-        <label for="price" class="mb-4">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" value="{{ product.price }}" required class="border border-gray-300 p-2 rounded w-full">
-        <br>
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save</button>
-    </form>
-    <a href="{% url 'product_list' %}" class=""> <--back; </a><br>
-    <a href="{% url 'delete_product' product.pk %}" class="text-red-500 hover:underline bg-red-300  p-2">Delete Product</a>
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Save</button>
+        </form>
+        <div class="flex justify-between mt-4">
+            <a href="{% url 'product_list' %}" class="text-blue-600">Back</a>
+            <a href="{% url 'delete_product' product.pk %}" class="text-red-600">Delete Product</a>
+        </div>
+    </div>
 </body>
 </html>

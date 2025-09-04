@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>Product List</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body class="bg-blue-400 p-6">
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
-    <h1 class="text-5xl font-bold mb-8 text-black text-center">Products in Stock</h1>
+    <a href="/"><h1 class="text-5xl font-bold mb-8 text-black text-center">Products in Stock</h1> </a>
     
     <a href="{% url 'add_product' %}" class="font-bold text-green-500 mb-8">Add New Product</a>
     <table class="min-w-full bg-white border border-gray-300 mt-8">
@@ -31,6 +31,7 @@
                     <span class="mx-1 text-gray-400">|</span>
                     <a href="{% url 'delete_product' product.pk %}" class="text-red-500 hover:underline">Delete</a>
                 </td>
+
             </tr>
             {% empty %}
             <tr>
