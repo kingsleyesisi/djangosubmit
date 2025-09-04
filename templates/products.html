@@ -10,7 +10,7 @@
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
     <a href="/"><h1 class="text-5xl font-bold mb-8 text-black text-center">Products in Stock</h1> </a>
     
-    <a href="{% url 'add_product' %}" class="font-bold text-green-500 mb-8">Add New Product</a>
+    <a href="{% url 'add_inventory' %}" class="font-bold text-green-500 mb-8">Add New Product</a>
     <table class="min-w-full bg-white border border-gray-300 mt-8">
         <thead>
             <tr>
@@ -21,21 +21,21 @@
             </tr>
         </thead>
         <tbody>
-            {% for product in products %}
+            {% for inventory in inventories %}
             <tr class="hover:bg-gray-50">
-                <td class="py-2 px-4 border-b">{{ product.name }}</td>
-                <td class="py-2 px-4 border-b">{{ product.quantity }}</td>
-                <td class="py-2 px-4 border-b">{{ product.price }}</td>
+                <td class="py-2 px-4 border-b">{{ inventory.name }}</td>
+                <td class="py-2 px-4 border-b">{{ inventory.quantity }}</td>
+                <td class="py-2 px-4 border-b">{{ inventory.price }}</td>
                 <td class="py-2 px-4 border-b">
-                    <a href="{% url 'edit_product' product.pk %}" class="text-blue-500 hover:underline">Edit</a>
+                    <a href="{% url 'edit' inventory.pk %}" class="text-blue-500 hover:underline">Edit</a>
                     <span class="mx-1 text-gray-400">|</span>
-                    <a href="{% url 'delete_product' product.pk %}" class="text-red-500 hover:underline">Delete</a>
+                    <a href="{% url 'delete' inventory.pk %}" class="text-red-500 hover:underline">Delete</a>
                 </td>
 
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" class="py-4 text-center text-gray-500">No products in stock.</td>
+                <td colspan="4" class="py-4 text-center text-gray-500">No items in stock.</td>
             </tr>
             {% endfor %}
         </tbody>
