@@ -10,19 +10,19 @@
         <form method="post">
             {% csrf_token %}
             <label>Product Name:</label>
-            <input type="text" name="name" value="{{ product.name }}" required class="border p-2 w-full mb-3">
+            <input type="text" name="name" value="{{ inventory.name }}" required class="border p-2 w-full mb-3">
 
             <label>Quantity:</label>
-            <input type="number" name="quantity" value="{{ product.quantity }}" required class="border p-2 w-full mb-3">
+            <input type="number" name="quantity" value="{{ inventory.quantity }}" required class="border p-2 w-full mb-3">
 
             <label>Price:</label>
-            <input type="number" name="price" step="0.01" value="{{ product.price }}" required class="border p-2 w-full mb-3">
+            <input type="number" name="price" step="0.01" value="{{ inventory.price }}" required class="border p-2 w-full mb-3">
 
             <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Save</button>
         </form>
         <div class="flex justify-between mt-4">
-            <a href="{% url 'product_list' %}" class="text-blue-600">Back</a>
-            <a href="{% url 'delete_product' product.pk %}" class="text-red-600">Delete Product</a>
+            <a href="{% url 'view_inventory' %}" class="text-blue-600">Back</a>
+            <a href="{% url 'delete' inventory.pk %}" class="text-red-600">Delete Product</a>
         </div>
     </div>
 </body>
