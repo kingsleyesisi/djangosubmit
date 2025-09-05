@@ -10,7 +10,7 @@ Simple landing README linking two active projects.
 
 
 ##  Sales Management Platform
-**Repo:** https://github.com/kingsleyesisi/djangosubmit/tree/main 
+**Repo:** https://github.com/kingsleyesisi/djangosubmit/tree/main/sales_management
 **Description:** A simple Sales Management platform with django
 
 
